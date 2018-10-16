@@ -1,2 +1,2 @@
 # Introduction
-网络编程知识积累。
+linux 系统编程相关知识积累。
