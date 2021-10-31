@@ -32,7 +32,7 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    serv_socket = socket(AF_INET, SOCK_STREAM, 0);
+    serv_socket = socket(AF_INET, SOCK_STREAM, 0);  //创建套接字
     if(serv_socket == -1) {
         error_handling("socket() error");
     }
@@ -42,16 +42,16 @@ int main(int argc, char **argv)
     serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     serv_addr.sin_port = htons(atoi(argv[1]));
 
-    if(bind(serv_socket, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) == -1) {
+    if(bind(serv_socket, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) == -1) {  //bind函数分配ip地址和端口号
         error_handling("bind() error");
     }
 
-    if(listen(serv_socket, 5) == -1) {
+    if(listen(serv_socket, 5) == -1) {   //把套接字转为可接收连接的状态
         error_handling("listen() error");    
     }
 
     clnt_addr_size = sizeof(clnt_addr);
-    clnt_socket = accept(serv_socket, (struct sockaddr *)&clnt_addr, &clnt_addr_size);
+    clnt_socket = accept(serv_socket, (struct sockaddr *)&clnt_addr, &clnt_addr_size);  // 受理连接请求，如果没有连接请求的情况下，不会返回，直到有请求为止
     if(clnt_socket == -1) {
         error_handling("accept() error");
     }
