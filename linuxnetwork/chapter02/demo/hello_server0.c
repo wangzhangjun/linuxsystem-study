@@ -13,7 +13,7 @@ void error_handling(char *message)
 {
     fputs(message, stderr);
     fputc('\n', stderr);
-    exit(1);    
+    exit(1);
 }
 
 int main(int argc, char **argv)
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     }
 
     if(listen(serv_socket, 5) == -1) {   //把套接字转为可接收连接的状态
-        error_handling("listen() error");    
+        error_handling("listen() error");
     }
 
     clnt_addr_size = sizeof(clnt_addr);
